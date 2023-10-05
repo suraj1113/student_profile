@@ -1,0 +1,51 @@
+.reg{
+    width: 100%;
+    height: 150px;
+    background-color: #1F2B44;
+}
+.reg .text{
+    color: white;
+    font-size: 25px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    margin-left: 20px;
+    padding: 20px;
+}
+.text span{
+    color: #2a84ed;
+}
+/* SearchBars.css */
+.search-container {
+    
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    border-radius: none;
+  }
+  .search-bar{
+    display: flex;
+  }
+
+  
+  input[type="text"] {
+    padding: 5px;
+    margin-right: 10px;
+  }
+  
+  .btn{
+    width: 130px;
+    height: 40px;
+    color: black;
+    padding: 10px 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    border-left: 5px solid #2a84ed;
+    border-top: none;
+    border-bottom: none;
+    border-right: none;
+    outline: none;
+  }
+  

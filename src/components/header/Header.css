@@ -1,0 +1,22 @@
+.header{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:#2a84ed ;
+}
+.left{
+    color: white;
+    margin-left: 20px;
+}
+.right{
+    font-size: 20px;
+    margin-right: 50px;
+}
+.icon1{
+    color: white;
+   
+    display: flex;
+    gap: 20px
+}
