@@ -12,6 +12,12 @@ import Header from './components/header/Header';
 import Logo from './components/logo/Logo';
 import Copyright from './components/copyright/Copyright';
 
+const places = [
+  { name: "pythan", category: "pythan", course: "1 week" },
+  { name: "java", category: "java", course: "8 week" },
+  { name: "javascript", category: "javascript", course: "4 week" }
+  // Add more place data as needed
+];
 
 function App() {
   return (
@@ -23,7 +29,7 @@ function App() {
       <Registration />
       <Routes>
 					<Route path='/' element={<Home />}></Route>
-          <Route path="/StudentLogin" element={<StudentLogin/>} />
+          <Route path="/StudentLogin" element={<StudentLogin places={places} />} />
           <Route path="*" element={<Missing/>} />
 				</Routes>
       <Personal/>
