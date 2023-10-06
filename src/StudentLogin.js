@@ -1,93 +1,56 @@
-import React, { Component } from "react";
-import "./App.css";
+import React, { useState } from 'react';
+import './styles.css'; // Import your CSS file for styling
 
-class StudentLogin extends Component {
-  constructor() {
-    super();
-    this.state = {
-      courses: [], 
-      selectedType: "All", 
-      selectedDuration: "All" 
-    };
-  }
+function StudentLogin({ places }) {
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedName, setSelectedName] = useState('');
 
-  componentDidMount() {
-    
-    fetch("/courses.json")
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({ courses: data });
-      });
-  }
+  const categories = ['All', 'pythan', 'java']; // Replace with your own categories
 
-  handleTypeChange = (event) => {
-    const selectedType = event.target.value;
-    this.setState({ selectedType });
+  const filterPlaces = (category,name) => {
+    setSelectedCategory(category);
+    setSelectedName(name);
   };
 
-  handleDurationChange = (event) => {
-    const selectedDuration = event.target.value;
-    this.setState({ selectedDuration });
-  };
-
-  render() {
-    const { courses, selectedType, selectedDuration } = this.state;
-
-    
-    const filteredCourses = courses.filter((course) => {
-      const typeMatch = selectedType === "All" || course.type === selectedType;
-      const durationMatch =
-        selectedDuration === "All" || course.duration === selectedDuration;
-      return typeMatch && durationMatch;
-    });
-
-    return (
-      <div className="App">
-        <h1>Course Filter</h1>
-        <div className="filter-section">
-          <div>
-            <label htmlFor="typeFilter">Course Type:</label>
-            <select
-              id="typeFilter"
-              onChange={this.handleTypeChange}
-              value={selectedType}
-            >
-              <option value="All">All</option>
-              <option value="Web Development">Web Development</option>
-              <option value="Data Science">Data Science</option>
-    
-            </select>
+  return (
+    <div className="portfolio-gallery">
+      <h2>Course </h2>
+      <div className='filters'>
+        <div className="filter">
+          <select
+            onChange={(e) => filterPlaces(e.target.value)}
+            value={selectedCategory}
+          >
+            {categories.map((category, index) => (
+              <option key={index} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+          <div className="filter">
+            <input
+              type="text"
+              placeholder="Filter by Name"
+              value={selectedName}
+              onChange={(e) => filterPlaces(selectedCategory, e.target.value)}
+            />
           </div>
-          <div>
-            <label htmlFor="durationFilter">Course Duration:</label>
-            <select
-              id="durationFilter"
-              onChange={this.handleDurationChange}
-              value={selectedDuration}
-            >
-              <option value="All">All</option>
-              <option value="8 weeks">8 weeks</option>
-              <option value="12 weeks">12 weeks</option>
-              
-            </select>
-          </div>
-        </div>
-        <div className="filtered-courses">
-          {filteredCourses.map((course) => (
-            <div key={course.id} className="course-box">
-              <div className="card"> 
-                <div className="card-content">
-                  <strong>{course.name}</strong>
-                  <p>Type: {course.type}</p>
-                  <p>Duration: {course.duration}</p>
-                </div>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
-    );
-  }
+    
+      <div className="place-container">
+       
+        {places.map((place, index) => (
+          (selectedCategory === 'All' || place.category === selectedCategory) && (
+            <div key={index} className="place-item">
+              <p>Course Name : {place.name}</p>
+              <p>Course Duration : {place.course}</p>
+            </div>
+          )
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default StudentLogin;
