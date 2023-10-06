@@ -13,10 +13,9 @@ import Logo from './components/logo/Logo';
 import Copyright from './components/copyright/Copyright';
 
 const places = [
-  { name: "pythan", category: "pythan", course: "1 week" },
-  { name: "java", category: "java", course: "8 week" },
-  { name: "javascript", category: "javascript", course: "4 week" }
-  // Add more place data as needed
+  { name: "Advance Diploma in Computer Application (ADCA) - Old", category: "Advance Diploma in Computer Application (ADCA) - Old", course: "6 months" },
+  { name: "Diploma in Fire and Safty Management", category: "Diploma in Fire and Safty Management", course: "1 Year" }
+
 ];
 
 function App() {
